@@ -3,70 +3,40 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Count Up/Down</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            text-align: center;
-            margin: 50px;
-        }
+    <title>Number Count</title>
+    <script type="text/javascript">
+        let num = 0;
 
-        #count {
-            font-size: 24px;
-            margin-bottom: 20px;
-        }
-
-        button {
-            font-size: 16px;
-            margin: 10px;
-            padding: 10px 20px;
-        }
-    </style>
-</head>
-<body>
-    <h1>Count Up/Down</h1>
-    <div id="count">0</div>
-    <button onclick="countUp()">Count Up</button>
-    <button onclick="countDown()">Count Down</button>
-
-    <script>
-        let count = 0;
-
-        function countUp() {
-            count++;
-            updateCount();
-        }
-
-        function countDown() {
-            count--;
-            updateCount();
-        }
-
-        function updateCount() {
-            document.getElementById('count').innerText = count;
-            checkDivisibility();
-        }
-
-        function checkDivisibility() {
-            if (count % 5 === 0) {
-                alert("Count is divisible by 5!");
-            } else {
-                alert("Count: " + count);
+        function play_audio(){
+            if (num % 5 == 0){
+                var sound;
+                alert("Divisible by 5!")
+                sound = document.querySelector("#aud");
+                sound.play();
             }
+            
         }
-    </script>
-</body>
-</html>
+        function up(){
+            num = num + 1;
+            alert(num);
+            play_audio()
+        }
+        function down(){
+            num = num - 1;
+            alert(num);
+            play_audio()
+        }
+        
+        
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Website</title>
+</script>
 </head>
 <body>
-    <h1>Welcome to My Website</h1>
-    <p> <a href="https://<khushman04>.github.io/<khushman04.github.io>/count_up_down.html">click to go to the main page</a></p>
+    <h1>Count Up or Down!</h1>
+    <button onclick="up()">UP</button>
+    <button onclick="down()">DOWN</button>
+    <audio id="aud"><source src="music.mp3" type="audio/mpeg"></audio>
+    <br>
+    <a href="./index.html">home page</a>
 </body>
 </html>
