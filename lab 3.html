@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Count Up/Down</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 50px;
+        }
+
+        #count {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        button {
+            font-size: 16px;
+            margin: 10px;
+            padding: 10px 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Count Up/Down</h1>
+    <div id="count">0</div>
+    <button onclick="countUp()">Count Up</button>
+    <button onclick="countDown()">Count Down</button>
+
+    <script>
+        let count = 0;
+
+        function countUp() {
+            count++;
+            updateCount();
+        }
+
+        function countDown() {
+            count--;
+            updateCount();
+        }
+
+        function updateCount() {
+            document.getElementById('count').innerText = count;
+            checkDivisibility();
+        }
+
+        function checkDivisibility() {
+            if (count % 5 === 0) {
+                alert("Count is divisible by 5!");
+            } else {
+                alert("Count: " + count);
+            }
+        }
+    </script>
+</body>
+</html>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Website</title>
+</head>
+<body>
+    <h1>Welcome to My Website</h1>
+    <p> <a href="https://<khushman04>.github.io/<khushman04.github.io>/count_up_down.html">click to go to the main page</a></p>
+</body>
+</html>
