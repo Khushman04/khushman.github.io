@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Average Calculator</title>
+<script>
+    function calculateAverage() {
+    const num1 = parseFloat(document.getElementById("num1").value);
+    const num2 = parseFloat(document.getElementById("num2").value);
+    const average = (num1 + num2) / 2;
+    document.getElementById("result").innerText = "Average: " + average.toFixed(2);
+}
+</script>
+</head>
+<body>
+    <h1>Average Calculator</h1>
+    <input type="number" id="num1" step="any" oninput="calculateAverage()">
+    <input type="number" id="num2" step="any" oninput="calculateAverage()">
+    <button onclick="calculateAverage()">Average</button>
+    <p id="result"></p>
+
+    <script src="script.js"></script>
+</body>
+</html>
+

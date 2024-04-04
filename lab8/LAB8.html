@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Khushman's randy tech Website</title>
+    <style>
+        .fruit {
+            border: 1px solid #ccc;
+            padding: 10px;
+            margin-bottom: 10px;
+        }
+    </style>
+
+<script>
+
+async function sendMessage() {
+    const cart = document.getElementById('cart'); 
+    const price = document.getElementById('totalPrice'); 
+    const cartcounter = document.getElementById("cartCount");
+
+    let totalPrice = 0;
+    let productCount = {};
+
+    cartItems.forEach(item => {
+        if (productCount[item.name]) {
+            productCount[item.name]++;
+        } else {
+            productCount[item.name] = 1;
+        }
+        totalPrice += item.price;
+    });
+
+    if (Object.keys(productCount).length > 0) {
+        const timestamp = new Date();
+        const data = { productCount, totalPrice, timestamp };
+
+        try {
+            const response = await fetch("https://lab8-61fb5-default-rtdb.firebaseio.com/orders.json", {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(data)
+            });
+
+            if (!response.ok) {
+                throw new Error('Failed to send message');
+            }
+            
+            // Show alert after successfully sending the order
+            alert('Your order has been submitted!');
+            
+            // Clear the cart after submitting the order
+            cart.innerHTML = '';
+            price.innerHTML ='Total Price: $0';
+            cartcounter.innerHTML = '0';
+            cartItems = [];
+        } catch (error) {
+            console.error('Error sending message:', error);
+        }
+    }
+}
+
+
+
+    let cartItems = [];
+
+    function addToCart(productName, price) {
+        cartItems.push({ name: productName, price: price });
+        displayCart();
+    }
+
+    function displayCart() {
+        const cartElement = document.querySelector('#cart');
+        const cartCountElement = document.querySelector('#cartCount');
+        const cartDetails = document.querySelector('#cartDetails');
+        const totalPriceElement = document.getElementById('totalPrice');
+
+        cartElement.innerHTML = '';
+        let totalPrice = 0;
+        let productCount = {};
+
+        cartItems.forEach(item => {
+            if (productCount[item.name]) {
+                productCount[item.name]++;
+            } else {
+                productCount[item.name] = 1;
+            }
+            totalPrice += item.price;
+        });
+
+        cartCountElement.textContent = cartItems.length;
+
+        for (let productName in productCount) {
+            const amount = productCount[productName];
+            const li = document.createElement('li');
+            const unitPrice = cartItems.find(item => item.name === productName).price;
+            const totalProductPrice = unitPrice * amount;
+            li.textContent = `${productName} - Amount: ${amount}, Unit Price: $${unitPrice}, Total: $${totalProductPrice}`;
+            cartElement.appendChild(li);
+        }
+
+        totalPriceElement.textContent = `Total Price: $${totalPrice}`;
+    }
+
+    function toggleCartDetails() {
+        const cartDetails = document.querySelector('#cartDetails');
+        if (cartDetails.style.display === 'none') {
+            cartDetails.style.display = 'block';
+        } else {
+            cartDetails.style.display = 'none';
+        }
+    }
+
+    document.addEventListener('DOMContentLoaded', function() {
+        const cartDetails = document.querySelector('#cartDetails');
+        cartDetails.style.display = 'none';
+
+        document.querySelector('#showHideCart').onclick = toggleCartDetails;
+
+        const addToCartButtons = document.querySelectorAll('.add-to-cart');
+        addToCartButtons.forEach(button => {
+            button.onclick = function() {
+                const productName = button.getAttribute('data-product');
+                const productPrice = parseFloat(button.getAttribute('data-price'));
+                addToCart(productName, productPrice);
+            };
+        });
+
+        const submit_button =  document.querySelector('#submit');
+        submit_button.onclick = sendMessage; 
+    });
+</script>
+</head>
+<body>
+<h1>Khushman's randy tech Store</h1>
+    <div class="products">
+        <div class="hardware" id="cpu">
+            <h3>CPU</h3>
+            <p>Price (each): $275</p>
+            <button class="add-to-cart" data-product="CPU" data-price="275">Add to Cart</button>
+        </div>
+        <div class="software" id="gta6">
+            <h3>GTA 6(beta)</h3>
+            <p>Price (each): $759</p>
+            <button class="add-to-cart" data-product="Gta6" data-price="759">Add to Cart</button>
+        </div>
+        <div class="hardware" id="gpu">
+            <h3>GPU</h3>
+            <p>Price: $1899</p>
+            <button class="add-to-cart" data-product="GPU" data-price="1899">Add to Cart</button>
+        </div>
+    </div>
+
+    <h2>Shopping Cart (<span id="cartCount">0</span>)</h2>
+    <div id="cartDetails">
+        <ul id="cart"></ul>
+        <p id="totalPrice">Total Price: $0</p>
+    </div>
+
+    <button id="showHideCart">Show/Hide Cart Details</button>
+    <button id="submit">Submit Order</button> 
+
+</body>
+</html>
