@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Rock Paper Scissors</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-image: url('https://static.vecteezy.com/system/resources/previews/000/691/497/original/rock-paper-scissors-neon-icons-vector.jpg');
+      background-size: cover;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .flex {
+      text-align: center;
+      color: white;
+    }
+
+    h1 {
+      font-size: 36px;
+      font-style: italic;
+    }
+
+    h2 {
+      font-size: 24px;
+      font-style: italic;
+    }
+
+    .optionBtn button {
+      padding: 10px 20px;
+      margin: 5px;
+      border: none;
+      background-color: #4CAF50; /* Green */
+      color: white;
+      font-size: 18px;
+      cursor: pointer;
+    }
+
+    .optionBtn button:hover {
+      background-color: #45a049;
+    }
+
+    .labels {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 20px;
+    }
+
+    .labels span {
+      font-size: 20px;
+    }
+
+    .scores {
+      font-size: 24px;
+      display: flex;
+      align-items: center;
+    }
+
+    #roundResults {
+      font-size: 20px;
+      margin-top: 20px;
+    }
+
+    #reset {
+      padding: 10px 20px;
+      margin-top: 20px;
+      border: none;
+      background-color: #f44336; /* Red */
+      color: white;
+      font-size: 18px;
+      cursor: pointer;
+    }
+
+    #reset:hover {
+      background-color: #d32f2f;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="flex">
+    <div>
+      <h1>Rock Paper Scissors</h1>
+      <h2>Choose Your Weapon</h2>
+      <h3>First To 5 Wins!</h3>
+
+      <div class="optionBtn">
+        <button id="0">Rock</button>
+        <button id="1">Paper</button>
+        <button id="2">Scissors</button>
+      </div>
+
+      <div class="labels">
+        <span>Player Score:</span>
+        <div class="scores" id="playerScore">0</div>
+      </div>
+
+      <div class="labels">
+        <span>Computer Score:</span>
+        <div class="scores" id="computerScore">0</div>
+      </div>
+
+      <div id="roundResults"></div>
+
+      <button id="reset">Play Again!</button>
+    </div>
+  </div>
+</body>
+<script src="javascript.js"></script>
+</html>
