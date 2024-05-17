@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Enhanced HTML Example</title>
+    </head>
+    <body>
+        <h1>Welcome to My Website!</h1>
+        <p>My name is Khushman Singh Sran, and I'm excited to share some content with you.</p>
+        
+        <h2>Lists:</h2>
+        <ul>
+            <li>Introduction to HTML</li>
+            <li>Exploring CSS</li>
+            <li>Learning JavaScript</li>
+        </ul>
+        
+        <ol>
+            <li>Setting up a Development Environment</li>
+            <li>Building Responsive Websites</li>
+            <li>Deploying Web Applications</li>
+        </ol>
+
+        <h2>Table:</h2>
+        <table border="1">
+            <tr>
+                <th>Topic</th>
+                <th>Description</th>
+            </tr>
+            <tr>
+                <td>HTML</td>
+                <td>HyperText Markup Language</td>
+            </tr>
+            <tr>
+                <td>CSS</td>
+                <td>Cascading Style Sheets</td>
+            </tr>
